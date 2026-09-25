@@ -181,11 +181,11 @@ def forecast_prices(cleaned_df, days_to_forecast):
 
 if __name__ == "__main__":
     #set the base path into the directory that holds both the data folder and the coding folder
-    base_path = r'C:\Users\paddy\OneDrive - Lancing College\NEA'
+    base_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
     
     #set different paths up ready to pass into the functions
-    directory_path = os.path.join(base_path, 'All price files')
-    db_path = os.path.join(base_path, 'Code', 'Output Files', 'Market_prices_cleaned_all.db')
+    directory_path = os.path.join(base_path, 'data', 'sample')
+    db_path = os.path.join(base_path, 'output', 'Market_prices_cleaned_all.db')
     table_name = "Market_prices"
 
     #select the read from directory to update the database, select read database for a quick run
