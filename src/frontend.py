@@ -9,7 +9,7 @@ from sklearn.linear_model import LinearRegression
 #base path is the path on my computer to the directory in which there are folders that hold the database, data files, and this code
 
 #define the base path and the path to the database
-base_path = r'C:\Users\paddy\OneDrive - Lancing College\NEA\Code'
+  base_path = os.path.join(os.path.dirname(__file__), "..")
 
 # Function to read from database
 def Read_db_to_df(db_path, table_name):
@@ -26,7 +26,7 @@ def Read_db_to_df(db_path, table_name):
     
 def Show_forecaster_page():
         #access the cleaned data out of the database and ensure that its type is datetime
-        db_path = os.path.join(base_path, 'Output Files', 'Market_prices_cleaned_all.db')
+        db_path = os.path.join(base_path, 'output', 'Market_prices_cleaned_all.db')
         cleaned_df = Read_db_to_df(db_path, "Cleaned_market_prices")
         cleaned_df['Date_time'] = pd.to_datetime(cleaned_df['Date_time'])
         
@@ -135,11 +135,11 @@ def Show_about_page():
     """)
     left_column, middle_column, right_column = st.columns([1, 20, 1]) #splits the page into three columns, with the middle column being much wider
     with middle_column: #places an image in the middle column so that it is centered on the page
-        st.image("C:/Users/paddy/OneDrive - Lancing College/NEA/code/Image for the about page/market prices visualiser 2.png", caption="Market Prices Visualizer Example", width=1000)
+        st.image(os.path.join(base_path, "docs", "market-prices-visualiser-2.png"), caption="Market Prices Visualizer Example", width=1000)
 
 def Show_graphing_page():
     #read the data from the database into a dataframe
-    db_path = os.path.join(base_path, 'Output Files', 'Market_prices_cleaned_all.db')
+    db_path = os.path.join(base_path, 'output', 'Market_prices_cleaned_all.db')
     cleaned_df = Read_db_to_df(db_path, "Cleaned_market_prices")
     
     #checks if the database is not empty
@@ -225,4 +225,4 @@ if __name__ == "__main__":
             st.rerun()
 
 
-# To run: streamlit run "C:\Users\paddy\OneDrive - Lancing College\NEA\Code\v4\Backend code.py"
+# To run: streamlit run frontend.py
