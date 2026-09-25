@@ -1,0 +1,8 @@
+
+Via Spyder Console:
+	!streamlit run GUIv3.py
+
+
+Via Anaconda Terminal:
+	cd C:\Users\Trading Account\OneDrive\Tech\EAFC-Project\Code\v3
+	python -m streamlit run GUIv3.py
